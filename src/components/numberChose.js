@@ -29,29 +29,40 @@ const NumberChose = () => {
 
   const checkLeftBubble = (e) => {
     const b = parseInt(e.target.value, 10)
-    if (b !== 3) {
-      return setLeftBubble('add-border')
-    } else {
-      return setLeftBubble('')
+    if (e.target.value) {
+      if (b !== 3) {
+        return setLeftBubble('add-border')
+      } else {
+        return setLeftBubble('')
+      }
     }
+  }
+
+  const checkFunction = (e) => {
+    console.log(e.target.textContent)
+    if (parseInt(e.target.textContent, 10) !== 1) {
+      return enterNumber(e)
+    } else {
+      inputLeftRef.current.value = 1
+      return leftFunction(e)
+    }
+  }
+
+  const leftFunction = (e) => {
+    setTwoClass('')
+    inputRightRef.current.focus()
+    inputRightRef.current.value = e.target.textContent
   }
 
   const enterNumber = (e) => {
     let b = parseInt(e.target.textContent)
     if (b !== 1) {
-      inputLeftRef.current.value = e.target.textContent
-      return setTwoClass('add-border')
+      inputLeftRef.current.value = b
+      setTwoClass('add-border')
     } else {
-      inputLeftRef.current.value = e.target.textContent
-      return setTwoClass('bad-border')
-    }
+      inputLeftRef.current.value = b
 
-    if (b !== 3) {
-      inputRightRef.current.value = e.target.textContent
-      return setLeftBubble('add-border')
-    } else {
-      inputRightRef.current.value = e.target.textContent
-      return setLeftBubble('bad-border')
+      return setTwoClass('bad-border')
     }
   }
 
@@ -102,36 +113,41 @@ const NumberChose = () => {
           <span className='small-line'></span>
           <span className='small-line'></span>
         </div>
-        <input type='text' onChange={checkLeftBubble} ref={inputRightRef} />
+        <input
+          type='text'
+          className='leftInput'
+          onChange={checkLeftBubble}
+          ref={inputRightRef}
+        />
       </button>
-      <button className='enter-bottom-btn' num='0' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='0' onClick={checkFunction}>
         0
       </button>
-      <button className='enter-bottom-btn' num='1' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='1' onClick={checkFunction}>
         1
       </button>
-      <button className='enter-bottom-btn' num='2' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='2' onClick={checkFunction}>
         2
       </button>
-      <button className='enter-bottom-btn' num='3' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='3' onClick={checkFunction}>
         3
       </button>
-      <button className='enter-bottom-btn' num='4' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='4' onClick={checkFunction}>
         4
       </button>
-      <button className='enter-bottom-btn' num='5' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='5' onClick={checkFunction}>
         5
       </button>
-      <button className='enter-bottom-btn' num='6' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='6' onClick={checkFunction}>
         6
       </button>
-      <button className='enter-bottom-btn' num='7' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='7' onClick={checkFunction}>
         7
       </button>
-      <button className='enter-bottom-btn' num='8' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='8' onClick={checkFunction}>
         8
       </button>
-      <button className='enter-bottom-btn' num='9' onClick={enterNumber}>
+      <button className='enter-bottom-btn' num='9' onClick={checkFunction}>
         9
       </button>
     </div>

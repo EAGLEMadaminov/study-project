@@ -61,8 +61,8 @@ h1 {
 .right-bubble {
   display: flex;
   flex-wrap: wrap;
-  padding: 25px;
-  width: 210px;
+  padding: 25px 40px;
+  width: 250px;
   justify-content: center;
   margin-left: 30px;
   cursor: pointer;
@@ -82,7 +82,7 @@ input {
   background-color: #b7b6b6;
   border-radius: 10px;
   width: 90px;
-  margin: 50px auto ;
+  margin: 50px auto;
   height: 40px;
 }
 .line-box {
