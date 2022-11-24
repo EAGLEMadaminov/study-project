@@ -1,11 +1,13 @@
 import React from 'react'
 import { HiSpeakerWave } from 'react-icons/hi2'
 import { useEffect, useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const NumberChose = () => {
   const [speakText, setSpeakText] = useState('')
   const [twoClass, setTwoClass] = useState('')
   const [leftBubble, setLeftBubble] = useState('')
+  const [changeColor, setChangeColor] = useState('')
   const inputLeftRef = useRef(null)
   const inputRightRef = useRef(null)
 
@@ -31,20 +33,22 @@ const NumberChose = () => {
     const b = parseInt(e.target.value, 10)
     if (e.target.value) {
       if (b !== 3) {
+        setChangeColor('padding-color-change')
         return setLeftBubble('add-border')
       } else {
+        setChangeColor('')
         return setLeftBubble('')
       }
     }
   }
 
   const checkFunction = (e) => {
-    console.log(e.target.textContent)
-    if (parseInt(e.target.textContent, 10) !== 1) {
-      return enterNumber(e)
-    } else {
-      inputLeftRef.current.value = 1
+    inputLeftRef.current.value = e.target.textContent
+    if (parseInt(inputLeftRef.current.value, 10) === 1) {
+      setChangeColor('')
       return leftFunction(e)
+    } else {
+      return enterNumber(e)
     }
   }
 
@@ -58,10 +62,10 @@ const NumberChose = () => {
     let b = parseInt(e.target.textContent)
     if (b !== 1) {
       inputLeftRef.current.value = b
+      setChangeColor('padding-color-change')
       setTwoClass('add-border')
     } else {
       inputLeftRef.current.value = b
-
       return setTwoClass('bad-border')
     }
   }
@@ -102,7 +106,7 @@ const NumberChose = () => {
           <div className='bubble-item'></div>
         </div>
       </div>
-      <button className='check-btn'>
+      <button className={`check-btn ${changeColor}`}>
         <input
           type='text'
           className='ten-input'
@@ -120,35 +124,38 @@ const NumberChose = () => {
           ref={inputRightRef}
         />
       </button>
-      <button className='enter-bottom-btn' num='0' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         0
       </button>
-      <button className='enter-bottom-btn' num='1' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         1
       </button>
-      <button className='enter-bottom-btn' num='2' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         2
       </button>
-      <button className='enter-bottom-btn' num='3' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         3
       </button>
-      <button className='enter-bottom-btn' num='4' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         4
       </button>
-      <button className='enter-bottom-btn' num='5' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         5
       </button>
-      <button className='enter-bottom-btn' num='6' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         6
       </button>
-      <button className='enter-bottom-btn' num='7' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         7
       </button>
-      <button className='enter-bottom-btn' num='8' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         8
       </button>
-      <button className='enter-bottom-btn' num='9' onClick={checkFunction}>
+      <button className='enter-bottom-btn' onClick={checkFunction}>
         9
+      </button>
+      <button className='move-btn'>
+        <Link to='/image'>Next</Link>{' '}
       </button>
     </div>
   )

@@ -78,18 +78,23 @@ input {
 .check-btn {
   border: none;
   display: flex;
+  align-items: center;
   padding: 2px 10px;
   background-color: #b7b6b6;
   border-radius: 10px;
   width: 90px;
   margin: 50px auto;
-  height: 40px;
+  height: 60px;
 }
 .line-box {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 20px;
+  height: 50px;
+  background-color: white;
+}
+.padding-color-change {
+  background-color: #ed696a;
 }
 .small-line {
   width: 2px;
@@ -118,4 +123,27 @@ input {
   border: none;
   height: 44px;
   width: 44px;
+}
+.ten-input {
+  width: 34px;
+  height: 50px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.leftInput {
+  height: 50px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.move-btn {
+  border: none;
+  margin-left: 30px;
+  background-color: #59c2e2;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+.move-btn a {
+  text-decoration: none;
+  color: white;
 }
